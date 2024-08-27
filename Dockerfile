@@ -5,7 +5,7 @@ FROM golang:1.20-alpine AS builder
 WORKDIR /app
 
 #### Copy Go tracking files
-COPY go.mod go.sum ./
+COPY go.mod ./
 
 #### Install Dependancies
 RUN go mod download
