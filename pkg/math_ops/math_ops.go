@@ -1,8 +1,9 @@
 // Simple Package for basic math opertaions
 package math_ops
 
-import "errors"
-
+import (
+	"fmt"
+)
 func Add(a, b int) int {
 	return a + b
 }
@@ -15,9 +16,12 @@ func Multiply(a, b int) int {
 	return a * b
 }
 
-func Divide(a, b int) (float64, error) {
+func Divide(a, b int) (float64) {
 	if b == 0 {
-		return 0, errors.New("division by zero is not allowed")
+        fmt.Println("devision by zero is not allowed")
+		return 0
 	}
-	return float64(a) / float64(b), nil
+	return float64(a) / float64(b)
 }
+
+
