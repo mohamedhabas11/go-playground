@@ -16,10 +16,12 @@ func Substract( a, b int ) int {
 	return a - b
 }
 
+// Multiply two numbers
 func Multiply( a, b float64 ) float64 {
 	return a * b
 }
 
+// Divide two numbers
 func Divide( a, b int ) int {
 	if b == 0 {
 		return 0
