@@ -15,11 +15,24 @@ func SubTesting(str string) {
     contains := strings.Contains(str, substring)
 
 	if contains {
-		fmt.Println("Substring found!")
+		fmt.Println("Found: ", substring)
 	} else {
 		fmt.Println("Substring not found!")
 	}
 
 	count := strings.Count(str, substring)
 	fmt.Println("Occurences: ", count)
+}
+
+func KillDups(s string) string {
+    seen := make(map[rune]bool)
+    result := ""
+    for _, char := range s {
+        if !seen[char] {
+            seen[char] = true
+            result += string(char)
+        }
+    }
+	fmt.Println("Original: ", s)
+    return result
 }

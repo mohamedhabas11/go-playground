@@ -15,5 +15,8 @@ func main() {
 	fmt.Printf("2 + 3 = %d\n", result)
 
 	// use the other imported thing
-	string_utils.SubTesting("Code & Go and then Go, because Go is awesome!")
+	input_string := "Code & Go and then Go, because Go is awesome!"
+	string_utils.SubTesting(input_string)
+	string_resutl := string_utils.KillDups(input_string)
+	fmt.Println("Result: ", string_resutl)
 }
