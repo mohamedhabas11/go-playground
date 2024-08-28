@@ -9,6 +9,7 @@ import (
 
 func greetTheMan(name string) string {
 	fmt.Println("Hello, " + name)
+	return "Hello, " + name
 }
 
 func subTesting() {
