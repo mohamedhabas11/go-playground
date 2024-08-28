@@ -19,6 +19,4 @@ func main() {
 
 	result = math_ops.Divide(2, 3)
 	fmt.Printf("2 / 3 = %d\n", result)
-
-	fmt.Print(result.(type))
 }
