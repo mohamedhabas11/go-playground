@@ -19,6 +19,15 @@ func main() {
 
 	// use the imported global package
 	result := math_ops.Add(2, 3)
-	fmt.Printf("2 + 3 = %d\n", result)
+	fmt.Printf("2 + 3 = %f\n", result)
+
+	result = math_ops.Subtract(2, 3, 4)
+	fmt.Printf("2 - 3 - 4 = %f\n", result)
+
+	result = math_ops.Multiply(5, 5, 10)
+	fmt.Printf("5 * 5 * 10 = %f\n", result)
+
+	result = math_ops.Divide(0, 1, 2)
+	fmt.Printf("2 / 2 / 2 = %f\n", result)
 
 }
