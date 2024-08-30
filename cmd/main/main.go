@@ -27,7 +27,7 @@ func main() {
 	result = math_ops.Multiply(5, 5, 10)
 	fmt.Printf("5 * 5 * 10 = %f\n", result)
 
-	result = math_ops.Divide(0, 1, 2)
+	result = math_ops.Divide(2, 2, 2)
 	fmt.Printf("2 / 2 / 2 = %f\n", result)
 
 }
