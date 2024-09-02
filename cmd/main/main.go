@@ -3,12 +3,14 @@ package main
 import (
 	// built-in packages go here
 	"fmt"
+
 	// selfmade packages go here
 	"github.com/mohamedhabas11/go-playground/internal/dict_utils"
 	"github.com/mohamedhabas11/go-playground/internal/string_utils"
 
 	// Global packages go here
 	"github.com/mohamedhabas11/go-playground/pkg/math_ops"
+	"github.com/mohamedhabas11/go-playground/pkg/net_ops"
 )
 
 func main() {
@@ -59,5 +61,13 @@ func main() {
 	}
 
 	fmt.Println(dict_utils.CombineDicts(test_dict, test_dict2))
+
+	iface := "bridge100"
+	ipaddress, err := net_ops.CheckInterface(iface)
+	if err != nil {
+		fmt.Printf("Error checking interface: %v\n", err)
+		return
+	}
+	fmt.Printf("interface: %v  ipaddr:%v\n", iface, ipaddress)
 
 }
