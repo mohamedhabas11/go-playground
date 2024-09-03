@@ -3,6 +3,7 @@ package main
 import (
 	// built-in packages go here
 	"fmt"
+	"strings"
 
 	// selfmade packages go here
 	"github.com/mohamedhabas11/go-playground/internal/dict_utils"
@@ -12,6 +13,33 @@ import (
 	"github.com/mohamedhabas11/go-playground/pkg/math_ops"
 	"github.com/mohamedhabas11/go-playground/pkg/net_ops"
 )
+
+// func echoMsg(msg string, times ...int) string {
+// 	// set the default value
+// 	count := 1
+// 	if len(times) > 0 {
+// 		count = times[0]
+// 	}
+// 	return fmt.Sprintf("%v\n", strings.Join(strings.Split(strings.Repeat(msg+" ", count), " "), " "))
+
+// }
+
+func echoMsg(msg string, times ...int) string {
+	// Default to echoing the message twice
+	repeatCount := 2
+	if len(times) > 0 {
+		repeatCount = times[0]
+	}
+
+	// Create a slice to hold the repeated messages
+	repeatedMsgs := make([]string, repeatCount)
+	for i := 0; i < repeatCount; i++ {
+		repeatedMsgs[i] = msg
+	}
+
+	// Join the repeated messages with a space
+	return strings.Join(repeatedMsgs, " ")
+}
 
 func main() {
 	fmt.Println("Hello, World!")
@@ -69,5 +97,9 @@ func main() {
 		return
 	}
 	fmt.Printf("interface: %v  ipaddr:%v\n", iface, ipaddress)
+
+	// use the local function
+	fmt.Println(echoMsg("Zawi"))
+	fmt.Println(echoMsg("Zawi", 3))
 
 }
