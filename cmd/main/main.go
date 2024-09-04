@@ -1,32 +1,25 @@
 package main
 
 import (
-	// built-in packages go here
 	"fmt"
+	"log"
 	"strings"
+	"time"
 
-	// selfmade packages go here
+	// Self-made packages
 	"github.com/mohamedhabas11/go-playground/internal/dict_utils"
+	"github.com/mohamedhabas11/go-playground/internal/private"
 	"github.com/mohamedhabas11/go-playground/internal/string_utils"
 
-	// Global packages go here
+	// Global packages
 	"github.com/mohamedhabas11/go-playground/pkg/math_ops"
 	"github.com/mohamedhabas11/go-playground/pkg/net_ops"
 )
 
-// func echoMsg(msg string, times ...int) string {
-// 	// set the default value
-// 	count := 1
-// 	if len(times) > 0 {
-// 		count = times[0]
-// 	}
-// 	return fmt.Sprintf("%v\n", strings.Join(strings.Split(strings.Repeat(msg+" ", count), " "), " "))
-
-// }
-
+// echoMsg returns the message repeated a specified number of times.
+// If no number is specified, it repeats the message twice.
 func echoMsg(msg string, times ...int) string {
-	// Default to echoing the message twice
-	repeatCount := 2
+	repeatCount := 2 // Default repetition count
 	if len(times) > 0 {
 		repeatCount = times[0]
 	}
@@ -44,62 +37,67 @@ func echoMsg(msg string, times ...int) string {
 func main() {
 	fmt.Println("Hello, World!")
 
-	// use the imported internal package
+	// Using the internal string_utils package
 	name := "Mohamed"
 	greet := string_utils.GreetTheMan(name)
 	fmt.Println(greet)
 
-	// use the imported global package
-	result := math_ops.Add(2, 3)
-	fmt.Printf("2 + 3 = %f\n", result)
+	// Using the global math_ops package
+	fmt.Printf("2 + 3 = %f\n", math_ops.Add(2, 3))
+	fmt.Printf("2 - 3 - 4 = %f\n", math_ops.Subtract(2, 3, 4))
+	fmt.Printf("5 * 5 * 10 = %f\n", math_ops.Multiply(5, 5, 10))
+	fmt.Printf("2 / 2 / 2 = %f\n", math_ops.Divide(2, 2, 2))
 
-	result = math_ops.Subtract(2, 3, 4)
-	fmt.Printf("2 - 3 - 4 = %f\n", result)
-
-	result = math_ops.Multiply(5, 5, 10)
-	fmt.Printf("5 * 5 * 10 = %f\n", result)
-
-	result = math_ops.Divide(2, 2, 2)
-	fmt.Printf("2 / 2 / 2 = %f\n", result)
-
-	// use the imported internal package
-	test_dict := map[string]string{
+	// Using the internal dict_utils package
+	testDict := map[string]string{
 		"key1": "value1",
 		"key2": "value2",
 		"key3": "value3",
 	}
 
-	// prints [key2 key3 key1] out of order ?
-	fmt.Println(dict_utils.GetKeys(test_dict))
-	// This is because the map is unordered
-	// To get the keys in order, you can sort them
-	// before returning them
+	// Print map keys (unordered and ordered)
+	fmt.Println("Unordered keys:", dict_utils.GetKeys(testDict))
+	fmt.Println("Ordered keys:", dict_utils.GetKeysInOrder(testDict))
+	fmt.Println("Sorted dictionary:", dict_utils.SortDict(testDict))
 
-	// prints [key1 key2 key3] in order
-	fmt.Println(dict_utils.GetKeysInOrder(test_dict))
-
-	// prints map[key1:value1 key2:value2 key3:value3] in order
-	fmt.Println(dict_utils.SortDict(test_dict))
-
-	// combine two dictionaries
-	test_dict2 := map[string]string{
+	// Combine two dictionaries
+	testDict2 := map[string]string{
 		"key4": "value4",
 		"key5": "value5",
 		"key6": "value6",
 	}
+	combinedDict := dict_utils.CombineDicts(testDict, testDict2)
+	fmt.Println("Combined dictionaries:", combinedDict)
 
-	fmt.Println(dict_utils.CombineDicts(test_dict, test_dict2))
-
+	// Using the global net_ops package
 	iface := "bridge100"
-	ipaddress, err := net_ops.CheckInterface(iface)
+	ipAddress, err := net_ops.CheckInterface(iface)
 	if err != nil {
-		fmt.Printf("Error checking interface: %v\n", err)
-		return
+		log.Printf("Error checking interface: %v\n", err)
+	} else {
+		fmt.Printf("Interface: %v, IP Address: %v\n", iface, ipAddress)
 	}
-	fmt.Printf("interface: %v  ipaddr:%v\n", iface, ipaddress)
 
-	// use the local function
+	// Local echoMsg function usage
 	fmt.Println(echoMsg("Zawi"))
 	fmt.Println(echoMsg("Zawi", 3))
 
+	// Using the internal private package
+	private.Run()
+
+	// File operations using the private package
+	filePath := "test_dir/test.txt"
+	appendedData := "This is appended text!"
+	timestamp := time.Now().Format("2006-01-02 15:04:05")
+	if err := private.AppendToFile(filePath, fmt.Sprintf("%v: %v\n", timestamp, appendedData)); err != nil {
+		log.Fatalf("Error appending to file: %v", err)
+	}
+	// Read and print the contents of the file
+	content, err := private.ReadFile(filePath)
+	if err != nil {
+		log.Fatalf("Error reading file: %v", err)
+	} else {
+		fmt.Println("File contents:")
+		fmt.Println(content)
+	}
 }
