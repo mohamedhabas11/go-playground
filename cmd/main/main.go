@@ -117,4 +117,5 @@ func main() {
 		fmt.Println(ns)
 	}
 
+	private.SearchAndReplace("text", "log", filePath)
 }
