@@ -78,12 +78,11 @@ func main() {
 		fmt.Printf("Interface: %v, IP Address: %v\n", iface, ipAddress)
 	}
 
-	// Local echoMsg function usage
-	fmt.Println(echoMsg("Zawi"))
-	fmt.Println(echoMsg("Zawi", 3))
+	// // Local echoMsg function usage
+	fmt.Println(echoMsg("keep it simple!"))
 
-	// Using the internal private package
-	private.Run()
+	// // Using the internal private package
+	// private.Run()
 
 	// File operations using the private package
 	filePath := "test_dir/test.txt"
@@ -100,4 +99,22 @@ func main() {
 		fmt.Println("File contents:")
 		fmt.Println(content)
 	}
+
+	domain_name := "github.com"
+	ip, err := net_ops.DNSLookup(domain_name)
+	if err != nil {
+		fmt.Printf("Error resolving: %v", err)
+	}
+	fmt.Printf("%v resolves to %v\n", domain_name, ip)
+
+	records, err := net_ops.DNSLookupNS(domain_name)
+	if err != nil {
+		fmt.Printf("Error resolving: %v", err)
+		return
+	}
+	fmt.Println("NameServers:")
+	for _, ns := range records {
+		fmt.Println(ns)
+	}
+
 }
