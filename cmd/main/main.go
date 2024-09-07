@@ -118,4 +118,21 @@ func main() {
 	}
 
 	private.SearchAndReplace("text", "log", filePath)
+
+	// Word count using the private package
+	wordCount, err := private.WordCount(filePath)
+	if err != nil {
+		log.Fatalf("Error counting words: %v", err)
+	} else {
+		fmt.Printf("Word count: %v\n", wordCount)
+	}
+
+	// Unique word count using the private package
+	uniqueWordCount, err := private.UniqueWordCount(filePath)
+	if err != nil {
+		log.Fatalf("Error counting unique words: %v", err)
+	} else {
+		fmt.Printf("Unique word count: %v\n", uniqueWordCount)
+	}
+
 }
