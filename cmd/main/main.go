@@ -117,7 +117,15 @@ func main() {
 		fmt.Println(ns)
 	}
 
+	// Search and replace using the private package
 	private.SearchAndReplace("text", "log", filePath)
+	update_content, err := private.OpenFile(filePath)
+	if err != nil {
+		log.Fatalf("Error reading file: %v", err)
+	} else {
+		fmt.Println("File contents:")
+		fmt.Println(update_content)
+	}
 
 	// Word count using the private package
 	wordCount, err := private.WordCount(filePath)
@@ -135,4 +143,6 @@ func main() {
 		fmt.Printf("Unique word count: %v\n", uniqueWordCount)
 	}
 
+	// Closure example using the private package
+	private.Closure()
 }
