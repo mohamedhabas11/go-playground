@@ -9,6 +9,7 @@ import (
 	// Self-made packages
 	"github.com/mohamedhabas11/go-playground/internal/dict_utils"
 	"github.com/mohamedhabas11/go-playground/internal/private"
+	"github.com/mohamedhabas11/go-playground/internal/slice_utils"
 	"github.com/mohamedhabas11/go-playground/internal/string_utils"
 
 	// Global packages
@@ -144,5 +145,15 @@ func main() {
 	}
 
 	// Closure example using the private package
-	private.Closure()
+	// private.Closure()
+
+	// Using the internal slice_utils package
+	// Example for GetItem
+	intSlice := []int{1, 2, 3, 4, 5}
+	fmt.Println(slice_utils.GetItem(intSlice, 2))  // Output: 3
+	fmt.Println(slice_utils.GetItem(intSlice, 10)) // Output: 0 (zero value for int)
+
+	strSlice := []string{"a", "b", "c", "d", "e"}
+	fmt.Println(slice_utils.GetItem(strSlice, 3)) // Output: d
+
 }
