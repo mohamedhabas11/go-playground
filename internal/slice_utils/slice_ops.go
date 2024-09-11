@@ -16,7 +16,7 @@ func SetItem[T any](slice []T, index int, value T) []T {
 	if index < 0 || index >= len(slice) {
 		return append(slice, value) // Append value if index is out of range
 	}
-	// If index is within range, replace the item
+	// If index is within range, insert value at the specified index.
 	return append(slice[:index], append([]T{value}, slice[index+1:]...)...)
 }
 
